@@ -7,9 +7,6 @@ export class Ludo {
         this.listenDiceClick();
         this.listenPieceClick();
         this.resetGame();
-        this.setPiecePosition("P1", 0, 1);
-        this.setPiecePosition("P2" , 0 , 2);
-        this.setPiecePosition("P3" , 0 , 3);
     }
 
     currentPositions = {
@@ -135,11 +132,11 @@ export class Ludo {
         this.diceTwo = Math.floor((Math.random() * 6) + 1);
 
         
-        if(this._setarValorDado){
+        /*if(this._setarValorDado){
             this.diceOne = 1;
             this.diceTwo = 1;
             this._setarValorDado = false;
-        }
+        }*/
 
         this.resultado = this.diceOne + this.diceTwo;
         console.log(this._diceOne + ' ' + this._diceTwo);
@@ -157,6 +154,25 @@ export class Ludo {
             }
         }
 
+        //verificar se os dados 1 ou 2 não possuem 6 e se todas peças tão na base então pular turno
+        this.state = state.dice_rolled;
+        const player = players[this.turn];
+
+        const verificarTodasPecasNaPosicaoBase = [0 , 1 ,2 , 3].filter(piece => {
+            var position = this.currentPositions[player][piece];
+
+            if ((base_positions[player].includes(position))) {
+                return true;
+            }
+        });
+
+        if ( (verificarTodasPecasNaPosicaoBase.length === 4) && (this.diceOne !== 6) && (this.diceTwo !== 6) ){
+            this.incrementTurn();
+            return;
+        }
+        //
+
+
         //
         var escolhaDado = document.getElementsByClassName("escolher-dado")[0];
         var containerDice = document.getElementsByClassName("container-dice");
@@ -167,7 +183,6 @@ export class Ludo {
         containerDice[0].addEventListener('click', this.handleClickContainer1.bind(this));
         containerDice[1].addEventListener('click', this.handleClickContainer2.bind(this));
         //
-        this.state = state.dice_rolled;
     }
     //
 

@@ -13,7 +13,7 @@ body{
   justify-content: center;
   color: white;
   text-align: center;
-  background-color: rgb(79, 77, 77);
+  background-color: rgb(45, 56, 68);
 }
 
 .board {
@@ -21,7 +21,7 @@ body{
   margin: 10px auto;
   margin-top: 1px;
   margin-bottom: 0;
-  background-color: rgb(79, 77, 77);
+  background-color: rgb(45, 56, 68);
 }
 
 .red-box {
@@ -29,7 +29,7 @@ body{
   background-size: cover;
   width: 245.5px;
   height: 245.5px;
-  border: 1px solid black;
+  border: 2px solid black;
 }
 
 .green-box {
@@ -37,7 +37,7 @@ body{
   background-size: cover;
   width: 245.5px;
   height: 245.5px;
-  border: 1px solid black;
+  border: 2px solid black;
 }
 
 .blue-box {
@@ -45,7 +45,7 @@ body{
   background-size: cover;
   width: 245.5px;
   height: 245.5px;
-  border: 1px solid black;
+  border: 2px solid black;
 }
 
 .yellow-box {
@@ -53,7 +53,7 @@ body{
   background-size: cover;
   width: 245.5px;
   height: 245.5px;
-  border: 1px solid black;
+  border: 2px solid black;
 }
 
 /**/
@@ -63,7 +63,7 @@ body{
 
 @keyframes border-blink {
   50% {
-      border-color: rgba(255, 255, 255, 0.8);
+      border-color: white;
   }
 }
 /**/
@@ -157,10 +157,34 @@ body{
   width: 25.5px;
   height: 25.5px;
   border: 1px solid #000;
-  background-color: brown;
+  background-color: #0f504c;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+div[id^="10"]:not([id="10"])
+{
+  background-color: #FF0000;
+
+}
+
+div[id^="20"]:not([id="20"])
+{
+  background-color: #0ca1eb;
+
+}
+
+div[id^="30"]:not([id="30"])
+{
+  background-color:#009900;
+
+}
+
+div[id^="40"]:not([id="40"])
+{
+  background-color:  #FFCC00;
+
 }
 
 #entrada-h {
@@ -172,7 +196,8 @@ body{
 }
 
 .destination {
-  background-color: black;
+  background-image: url(../images/home.png);
+  background-size: cover;
   width: 152px;
   height: 152px;
 }
@@ -229,9 +254,28 @@ body{
 
 .container-dice {
   display: inline-block;
+  grid: 300px;
   top: 200px;
   width: 100px;
   height: 100px;
+  margin-right: 7px;
+}
+
+.placar{
+  margin-top: 70px;
+  margin-right: 40px;
+}
+
+.roll-button{
+  margin-bottom: 20px;
+}
+
+.active-player{
+  margin-bottom: 10px;
+}
+
+.escolher-dado{
+  margin-top: 30px;
 }
 
 .hover-effect:hover{
@@ -278,8 +322,8 @@ button:disabled {
   height: 20px;
   margin: -10px 5px 5px -10px;
   border-radius: 20px;
-  background-color: #ef233c;
-  box-shadow: inset 2px 2px #d90429;}
+  background-color: black;
+  box-shadow: inset 2px 2px black;}
 
 .dice-one {
   left: 450px; }
