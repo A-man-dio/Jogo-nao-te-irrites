@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../css/paginaInicial.css">
+</head>
+
+<body>
+
+  <div class="jogo">
+
+    <div class="board">
+
+      <!--primeira metade-->
+      <div class="row">
+        <div class="red-box">
+  
+        </div>
+  
+        <div class="cell-container">
+          <div class="row">
+            <div class="cell rodar-cima">16</div>
+            <div class="cell rodar-cima" id="entrada-h">FICHA</div>
+            <div class="cell rodar-cima">14</div>
+          </div>
+  
+          <div class="row">
+            <div class="cell rodar-cima">17</div>
+            <div class="cell alinhar-direita rodar-cima">I</div>
+            <div class="cell rodar-cima">13</div>
+          </div>
+  
+          <div class="row">
+            <div class="cell rodar-cima">18</div>
+            <div class="cell alinhar-direita rodar-cima">II</div>
+            <div class="cell rodar-cima">12</div>
+          </div>
+  
+          <div class="row">
+            <div class="cell rodar-cima">19</div>
+            <div class="cell alinhar-direita rodar-cima">III</div>
+            <div class="cell rodar-cima">11</div>
+          </div>
+  
+          <div class="row">
+            <div class="cell rodar-cima">F</div>
+            <div class="cell alinhar-direita rodar-cima">IV</div>
+            <div class="cell rodar-cima">F</div>
+          </div>
+  
+          <div class="row">
+            <div class="cell rodar-cima">1</div>
+            <div class="cell alinhar-direita rodar-cima">V</div>
+            <div class="cell rodar-cima">9</div>
+          </div>
+  
+          <div class="row">
+            <div class="cell rodar-cima">2</div>
+            <div class="cell alinhar-direita rodar-cima">VI</div>
+            <div class="cell rodar-cima">8</div>
+          </div>
+  
+          <div class="row">
+            <div class="cell rodar-cima">3</div>
+            <div class="cell alinhar-direita rodar-cima">VII</div>
+            <div class="cell rodar-cima">7</div>
+          </div>
+  
+          <div class="row">
+            <div class="cell rodar-cima">4</div>
+            <div class="cell alinhar-direita rodar-cima">VIII</div>
+            <div class="cell rodar-cima">6</div>
+          </div>
+
+          
+        </div>
+  
+        <div class="green-box">
+          
+        </div>
+      </div>
+  
+      <!--segunda metade-->
+  
+      <div class="cell-container">
+        
+        <div class="row">
+          <div class="cell vertical">14</div>
+          <div class="cell vertical">13</div>
+          <div class="cell vertical">12</div>
+          <div class="cell vertical">11</div>
+          <div class="cell vertical">F</div>
+          <div class="cell vertical">9</div>
+          <div class="cell vertical">8</div>
+          <div class="cell vertical">7</div>
+          <div class="cell vertical">6</div>
+          <div class="cell vertical">5</div>
+          <div class="cell alinhar-direita">IX</div>
+          <div class="cell vertical rodar-cima">5</div>
+          <div class="cell vertical rodar-cima">4</div>
+          <div class="cell vertical rodar-cima">3</div>
+          <div class="cell vertical rodar-cima">2</div>
+          <div class="cell vertical rodar-cima">1</div>
+          <div class="cell vertical rodar-cima">F</div>
+          <div class="cell vertical rodar-cima">19</div>
+          <div class="cell vertical rodar-cima">18</div>
+          <div class="cell vertical rodar-cima">17</div>
+          <div class="cell vertical rodar-cima">16</div>
+        </div>
+
+        <div class="row">
+          <div class="cell vertical" id="entrada-v">FICHA</div>
+          <div class="cell vertical alinhar-baixo">I</div>
+          <div class="cell vertical alinhar-baixo">II</div>
+          <div class="cell vertical alinhar-baixo">III</div>
+          <div class="cell vertical alinhar-baixo">IV</div>
+          <div class="cell vertical alinhar-baixo">V</div>
+          <div class="cell vertical alinhar-baixo">VI</div>
+          <div class="cell vertical alinhar-baixo">VII</div>
+          <div class="cell vertical alinhar-baixo">VIII</div>
+          <div class="cell vertical alinhar-baixo">IX</div>
+          <div class="destination"></div>
+          <div class="cell vertical alinhar-baixo rodar-cima">IX</div>
+          <div class="cell vertical alinhar-baixo rodar-cima">VIII</div>
+          <div class="cell vertical alinhar-baixo rodar-cima">VII</div>
+          <div class="cell vertical alinhar-baixo rodar-cima">VI</div>
+          <div class="cell vertical alinhar-baixo rodar-cima">V</div>
+          <div class="cell vertical alinhar-baixo rodar-cima">IV</div>
+          <div class="cell vertical alinhar-baixo rodar-cima">III</div>
+          <div class="cell vertical alinhar-baixo rodar-cima">II</div>
+          <div class="cell vertical alinhar-baixo rodar-cima">I</div>
+          <div class="cell vertical rodar-cima" id="entrada-v">FICHA</div>
+        </div>
+
+        <div class="row">
+          <div class="cell vertical">16</div>
+          <div class="cell vertical">17</div>
+          <div class="cell vertical">18</div>
+          <div class="cell vertical">19</div>
+          <div class="cell vertical">F</div>
+          <div class="cell vertical">1</div>
+          <div class="cell vertical">2</div>
+          <div class="cell vertical">3</div>
+          <div class="cell vertical">4</div>
+          <div class="cell vertical">5</div>
+          <div class="cell alinhar-direita">IX</div>
+          <div class="cell vertical rodar-cima">5</div>
+          <div class="cell vertical rodar-cima">6</div>
+          <div class="cell vertical rodar-cima">7</div>
+          <div class="cell vertical rodar-cima">8</div>
+          <div class="cell vertical rodar-cima">9</div>
+          <div class="cell vertical rodar-cima">F</div>
+          <div class="cell vertical rodar-cima">11</div>
+          <div class="cell vertical rodar-cima">12</div>
+          <div class="cell vertical rodar-cima">13</div>
+          <div class="cell vertical rodar-cima">14</div>
+        </div>
+        
+      </div>
+  
+      <!--Terceira metade-->
+  
+      <div class="row">
+        <div class="blue-box">
+          
+        </div>
+  
+        <div class="cell-container">
+          <div class="row">
+            <div class="cell">6</div>
+            <div class="cell alinhar-direita">VIII</div>
+            <div class="cell">4</div>
+          </div>
+  
+          <div class="row">
+            <div class="cell">7</div>
+            <div class="cell alinhar-direita">VII</div>
+            <div class="cell">3</div>
+          </div>
+  
+          <div class="row">
+            <div class="cell">8</div>
+            <div class="cell alinhar-direita">VI</div>
+            <div class="cell">2</div>
+          </div>
+  
+          <div class="row">
+            <div class="cell">9</div>
+            <div class="cell alinhar-direita">V</div>
+            <div class="cell">1</div>
+          </div>
+  
+          <div class="row">
+            <div class="cell">F</div>
+            <div class="cell alinhar-direita">IV</div>
+            <div class="cell">F</div>
+          </div>
+  
+          <div class="row">
+            <div class="cell">11</div>
+            <div class="cell alinhar-direita">III</div>
+            <div class="cell">19</div>
+          </div>
+  
+          <div class="row">
+            <div class="cell">12</div>
+            <div class="cell alinhar-direita">II</div>
+            <div class="cell">18</div>
+          </div>
+  
+          <div class="row">
+            <div class="cell">13</div>
+            <div class="cell alinhar-direita">I</div>
+            <div class="cell">17</div>
+          </div>
+  
+          <div class="row">
+            <div class="cell">14</div>
+            <div class="cell" id="entrada-h">FICHA</div>
+            <div class="cell">16</div>
+          </div>
+        </div>
+  
+        <div class="yellow-box">
+          
+        </div>
+      </div>
+    </div>
+  
+
+
+
+  </div>
+
+  
+
+</body>
+
+</html>

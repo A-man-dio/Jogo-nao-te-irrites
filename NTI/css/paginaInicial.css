@@ -1,0 +1,110 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+
+.jogo{
+  display: flex;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.board{
+  border-radius: 5px;
+  margin: 10px auto;
+  margin-top: 1px;
+  margin-bottom: 0;
+}
+
+.red-box{
+  
+    width: 245.5px;
+    height: 245.5px;
+    border: 1px solid black;
+}
+.green-box{
+    
+    width: 245.5px;
+    height: 245.5px;
+    border: 1px solid black;
+}
+.blue-box{
+  
+    width: 245.5px;
+    height: 245.5px;
+    border:1px solid black;
+}
+.yellow-box{
+  
+    width: 245.5px;
+    height: 245.5px;
+    border:1px solid #000;
+}
+
+
+.green{
+  background-color: #009900;
+}
+.red{
+  background-color: #FF0000;
+}
+.blue{
+  background-color: #66CCFF;
+}
+.yellow{
+  background-color: #FFCC00;
+}
+
+
+.cell{
+  width: 25.5px;
+  height: 25.5px;
+  border: 1px solid #000;
+  background-color: brown;
+}
+
+#entrada-h{
+  width: 150px;
+}
+
+#entrada-v{
+  height: 150px;
+}
+
+.destination{
+  background-color: black;
+    width: 152px;
+    height: 152px;
+}
+
+.row{
+  display: flex;
+}
+
+.alinhar-direita{
+  margin-left: 40px;
+  margin-right: 40px;
+  width: 70px;
+}
+
+.alinhar-baixo{
+  margin-top: 40px;
+  margin-bottom: 40px;
+  height: 70px;
+}
+
+.vertical{
+  writing-mode: vertical-lr;
+}
+
+.rodar-cima{
+  transform: rotate(180deg);
+}
+
+
+
+
+
+
