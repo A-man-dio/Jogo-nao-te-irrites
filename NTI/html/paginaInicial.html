@@ -12,230 +12,387 @@
 
   <div class="jogo">
 
+
     <div class="board">
+
+      <div class="player-pieces">
+        <!--red-->
+        <div class="player-piece" player-id="P1" piece="0"></div>
+        <div class="player-piece" player-id="P1" piece="1"></div>
+        <div class="player-piece" player-id="P1" piece="2"></div>
+        <div class="player-piece" player-id="P1" piece="3"></div>
+
+        <!--green-->
+        <div class="player-piece" player-id="P2" piece="0"></div>
+        <div class="player-piece" player-id="P2" piece="1"></div>
+        <div class="player-piece" player-id="P2" piece="2"></div>
+        <div class="player-piece" player-id="P2" piece="3"></div>
+
+        <!--blue-->
+        <div class="player-piece" player-id="P3" piece="0"></div>
+        <div class="player-piece" player-id="P3" piece="1"></div>
+        <div class="player-piece" player-id="P3" piece="2"></div>
+        <div class="player-piece" player-id="P3" piece="3"></div>
+
+        <!--yellow-->
+        <div class="player-piece" player-id="P4" piece="0"></div>
+        <div class="player-piece" player-id="P4" piece="1"></div>
+        <div class="player-piece" player-id="P4" piece="2"></div>
+        <div class="player-piece" player-id="P4" piece="3"></div>
+      </div>
+
+
 
       <!--primeira metade-->
       <div class="row">
-        <div class="red-box">
-  
+        <div class="red-box player-base" id="P1">
+          <div class="white-box">
+            <div>
+              <div class="piece 500" id="piece-red-1"></div>
+              <div class="piece 501" id="piece-red-2"></div>
+            </div>
+
+            <div>
+              <div class="piece 502" id="piece-red-3"></div>
+              <div class="piece 503" id="piece-red-4"></div>
+            </div>
+          </div>
         </div>
-  
+
         <div class="cell-container">
           <div class="row">
-            <div class="cell rodar-cima">16</div>
-            <div class="cell rodar-cima" id="entrada-h">FICHA</div>
-            <div class="cell rodar-cima">14</div>
-          </div>
-  
-          <div class="row">
-            <div class="cell rodar-cima">17</div>
-            <div class="cell alinhar-direita rodar-cima">I</div>
-            <div class="cell rodar-cima">13</div>
-          </div>
-  
-          <div class="row">
-            <div class="cell rodar-cima">18</div>
-            <div class="cell alinhar-direita rodar-cima">II</div>
-            <div class="cell rodar-cima">12</div>
-          </div>
-  
-          <div class="row">
-            <div class="cell rodar-cima">19</div>
-            <div class="cell alinhar-direita rodar-cima">III</div>
-            <div class="cell rodar-cima">11</div>
-          </div>
-  
-          <div class="row">
-            <div class="cell rodar-cima">F</div>
-            <div class="cell alinhar-direita rodar-cima">IV</div>
-            <div class="cell rodar-cima">F</div>
-          </div>
-  
-          <div class="row">
-            <div class="cell rodar-cima">1</div>
-            <div class="cell alinhar-direita rodar-cima">V</div>
-            <div class="cell rodar-cima">9</div>
-          </div>
-  
-          <div class="row">
-            <div class="cell rodar-cima">2</div>
-            <div class="cell alinhar-direita rodar-cima">VI</div>
-            <div class="cell rodar-cima">8</div>
-          </div>
-  
-          <div class="row">
-            <div class="cell rodar-cima">3</div>
-            <div class="cell alinhar-direita rodar-cima">VII</div>
-            <div class="cell rodar-cima">7</div>
-          </div>
-  
-          <div class="row">
-            <div class="cell rodar-cima">4</div>
-            <div class="cell alinhar-direita rodar-cima">VIII</div>
-            <div class="cell rodar-cima">6</div>
+            <div class="cell rodar-cima" id="77">16</div>
+            <div class="cell rodar-cima 76" id="entrada-h">FICHA</div>
+            <div class="cell rodar-cima" id="75">14</div>
           </div>
 
-          
+          <div class="row">
+            <div class="cell rodar-cima" id="78">17</div>
+            <div class="cell alinhar-direita rodar-cima" id="100">I</div>
+            <div class="cell rodar-cima" id="74">13</div>
+          </div>
+
+          <div class="row">
+            <div class="cell rodar-cima" id="79">18</div>
+            <div class="cell alinhar-direita rodar-cima" id="101">II</div>
+            <div class="cell rodar-cima" id="73">12</div>
+          </div>
+
+          <div class="row">
+            <div class="cell rodar-cima" id="80">19</div>
+            <div class="cell alinhar-direita rodar-cima" id="102">III</div>
+            <div class="cell rodar-cima" id="72">11</div>
+          </div>
+
+          <div class="row">
+            <div class="cell rodar-cima start-red" id="1">F</div>
+            <div class="cell alinhar-direita rodar-cima" id="103">IV</div>
+            <div class="cell rodar-cima" id="71">F</div>
+          </div>
+
+          <div class="row">
+            <div class="cell rodar-cima" id="2">1</div>
+            <div class="cell alinhar-direita rodar-cima" id="104">V</div>
+            <div class="cell rodar-cima" id="70">9</div>
+          </div>
+
+          <div class="row">
+            <div class="cell rodar-cima" id="3">2</div>
+            <div class="cell alinhar-direita rodar-cima" id="105">VI</div>
+            <div class="cell rodar-cima" id="69">8</div>
+          </div>
+
+          <div class="row">
+            <div class="cell rodar-cima" id="4">3</div>
+            <div class="cell alinhar-direita rodar-cima" id="106">VII</div>
+            <div class="cell rodar-cima" id="68">7</div>
+          </div>
+
+          <div class="row">
+            <div class="cell rodar-cima" id="5">4</div>
+            <div class="cell alinhar-direita rodar-cima" id="107">VIII</div>
+            <div class="cell rodar-cima" id="67">6</div>
+          </div>
+
+
         </div>
-  
-        <div class="green-box">
-          
+
+        <div class="green-box player-base" id="P2">
+          <div class="white-box">
+            <div>
+              <div class="piece 600" id="piece-green-1"></div>
+              <div class="piece 601" id="piece-green-2"></div>
+            </div>
+
+            <div>
+              <div class="piece 602" id="piece-green-3"></div>
+              <div class="piece 603" id="piece-green-4"></div>
+            </div>
+
+          </div>
         </div>
       </div>
-  
+
       <!--segunda metade-->
-  
+
       <div class="cell-container">
-        
+
         <div class="row">
-          <div class="cell vertical">14</div>
-          <div class="cell vertical">13</div>
-          <div class="cell vertical">12</div>
-          <div class="cell vertical">11</div>
-          <div class="cell vertical">F</div>
-          <div class="cell vertical">9</div>
-          <div class="cell vertical">8</div>
-          <div class="cell vertical">7</div>
-          <div class="cell vertical">6</div>
-          <div class="cell vertical">5</div>
-          <div class="cell alinhar-direita">IX</div>
-          <div class="cell vertical rodar-cima">5</div>
-          <div class="cell vertical rodar-cima">4</div>
-          <div class="cell vertical rodar-cima">3</div>
-          <div class="cell vertical rodar-cima">2</div>
-          <div class="cell vertical rodar-cima">1</div>
-          <div class="cell vertical rodar-cima">F</div>
-          <div class="cell vertical rodar-cima">19</div>
-          <div class="cell vertical rodar-cima">18</div>
-          <div class="cell vertical rodar-cima">17</div>
-          <div class="cell vertical rodar-cima">16</div>
+          <div class="cell vertical" id="15">14</div>
+          <div class="cell vertical" id="14">13</div>
+          <div class="cell vertical" id="13">12</div>
+          <div class="cell vertical" id="12">11</div>
+          <div class="cell vertical" id="11">F</div>
+          <div class="cell vertical" id="10">9</div>
+          <div class="cell vertical" id="9">8</div>
+          <div class="cell vertical" id="8">7</div>
+          <div class="cell vertical" id="7">6</div>
+          <div class="cell vertical" id="6">5</div>
+          <div class="cell alinhar-direita" id="108">IX</div>
+          <div class="cell vertical rodar-cima" id="66">5</div>
+          <div class="cell vertical rodar-cima" id="65">4</div>
+          <div class="cell vertical rodar-cima" id="64">3</div>
+          <div class="cell vertical rodar-cima" id="63">2</div>
+          <div class="cell vertical rodar-cima" id="62">1</div>
+          <div class="cell vertical rodar-cima start-green" id="61">F</div>
+          <div class="cell vertical rodar-cima" id="60">19</div>
+          <div class="cell vertical rodar-cima" id="59">18</div>
+          <div class="cell vertical rodar-cima" id="58">17</div>
+          <div class="cell vertical rodar-cima" id="57">16</div>
         </div>
 
         <div class="row">
-          <div class="cell vertical" id="entrada-v">FICHA</div>
-          <div class="cell vertical alinhar-baixo">I</div>
-          <div class="cell vertical alinhar-baixo">II</div>
-          <div class="cell vertical alinhar-baixo">III</div>
-          <div class="cell vertical alinhar-baixo">IV</div>
-          <div class="cell vertical alinhar-baixo">V</div>
-          <div class="cell vertical alinhar-baixo">VI</div>
-          <div class="cell vertical alinhar-baixo">VII</div>
-          <div class="cell vertical alinhar-baixo">VIII</div>
-          <div class="cell vertical alinhar-baixo">IX</div>
-          <div class="destination"></div>
-          <div class="cell vertical alinhar-baixo rodar-cima">IX</div>
-          <div class="cell vertical alinhar-baixo rodar-cima">VIII</div>
-          <div class="cell vertical alinhar-baixo rodar-cima">VII</div>
-          <div class="cell vertical alinhar-baixo rodar-cima">VI</div>
-          <div class="cell vertical alinhar-baixo rodar-cima">V</div>
-          <div class="cell vertical alinhar-baixo rodar-cima">IV</div>
-          <div class="cell vertical alinhar-baixo rodar-cima">III</div>
-          <div class="cell vertical alinhar-baixo rodar-cima">II</div>
-          <div class="cell vertical alinhar-baixo rodar-cima">I</div>
-          <div class="cell vertical rodar-cima" id="entrada-v">FICHA</div>
+          <div class="cell vertical 16" id="entrada-v">FICHA</div>
+          <div class="cell vertical alinhar-baixo" id="200">I</div>
+          <div class="cell vertical alinhar-baixo" id="201">II</div>
+          <div class="cell vertical alinhar-baixo" id="202">III</div>
+          <div class="cell vertical alinhar-baixo" id="203">IV</div>
+          <div class="cell vertical alinhar-baixo" id="204">V</div>
+          <div class="cell vertical alinhar-baixo" id="205">VI</div>
+          <div class="cell vertical alinhar-baixo" id="206">VII</div>
+          <div class="cell vertical alinhar-baixo" id="207">VIII</div>
+          <div class="cell vertical alinhar-baixo" id="208">IX</div>
+          <div class="destination">
+            <div id="109"></div>
+            <div id="209"></div>
+            <div id="309"></div>
+            <div id="409"></div>
+          </div>
+          <div class="cell vertical alinhar-baixo rodar-cima" id="308">IX</div>
+          <div class="cell vertical alinhar-baixo rodar-cima" id="307">VIII</div>
+          <div class="cell vertical alinhar-baixo rodar-cima" id="306">VII</div>
+          <div class="cell vertical alinhar-baixo rodar-cima" id="305">VI</div>
+          <div class="cell vertical alinhar-baixo rodar-cima" id="304">V</div>
+          <div class="cell vertical alinhar-baixo rodar-cima" id="303">IV</div>
+          <div class="cell vertical alinhar-baixo rodar-cima" id="302">III</div>
+          <div class="cell vertical alinhar-baixo rodar-cima" id="301">II</div>
+          <div class="cell vertical alinhar-baixo rodar-cima" id="300">I</div>
+          <div class="cell vertical rodar-cima 56" id="entrada-v">FICHA</div>
         </div>
 
         <div class="row">
-          <div class="cell vertical">16</div>
-          <div class="cell vertical">17</div>
-          <div class="cell vertical">18</div>
-          <div class="cell vertical">19</div>
-          <div class="cell vertical">F</div>
-          <div class="cell vertical">1</div>
-          <div class="cell vertical">2</div>
-          <div class="cell vertical">3</div>
-          <div class="cell vertical">4</div>
-          <div class="cell vertical">5</div>
-          <div class="cell alinhar-direita">IX</div>
-          <div class="cell vertical rodar-cima">5</div>
-          <div class="cell vertical rodar-cima">6</div>
-          <div class="cell vertical rodar-cima">7</div>
-          <div class="cell vertical rodar-cima">8</div>
-          <div class="cell vertical rodar-cima">9</div>
-          <div class="cell vertical rodar-cima">F</div>
-          <div class="cell vertical rodar-cima">11</div>
-          <div class="cell vertical rodar-cima">12</div>
-          <div class="cell vertical rodar-cima">13</div>
-          <div class="cell vertical rodar-cima">14</div>
+          <div class="cell vertical" id="17">16</div>
+          <div class="cell vertical" id="18">17</div>
+          <div class="cell vertical" id="19">18</div>
+          <div class="cell vertical" id="20">19</div>
+          <div class="cell vertical start-blue" id="21">F</div>
+          <div class="cell vertical" id="22">1</div>
+          <div class="cell vertical" id="23">2</div>
+          <div class="cell vertical" id="24">3</div>
+          <div class="cell vertical" id="25">4</div>
+          <div class="cell vertical" id="26">5</div>
+          <div class="cell alinhar-direita" id="408">IX</div>
+          <div class="cell vertical rodar-cima" id="46">5</div>
+          <div class="cell vertical rodar-cima" id="47">6</div>
+          <div class="cell vertical rodar-cima" id="48">7</div>
+          <div class="cell vertical rodar-cima" id="49">8</div>
+          <div class="cell vertical rodar-cima" id="50">9</div>
+          <div class="cell vertical rodar-cima" id="51">F</div>
+          <div class="cell vertical rodar-cima" id="52">11</div>
+          <div class="cell vertical rodar-cima" id="53">12</div>
+          <div class="cell vertical rodar-cima" id="54">13</div>
+          <div class="cell vertical rodar-cima" id="55">14</div>
         </div>
-        
+
       </div>
-  
+
       <!--Terceira metade-->
-  
+
       <div class="row">
-        <div class="blue-box">
-          
+        <div class="blue-box player-base" id="P3">
+          <div class="white-box">
+            <div>
+              <div class="piece 700" id="piece-blue-1"></div>
+              <div class="piece 701" id="piece-blue-2"></div>
+            </div>
+
+            <div>
+              <div class="piece 702" id="piece-blue-3"></div>
+              <div class="piece 703" id="piece-blue-4"></div>
+            </div>
+
+          </div>
         </div>
-  
+
         <div class="cell-container">
           <div class="row">
-            <div class="cell">6</div>
-            <div class="cell alinhar-direita">VIII</div>
-            <div class="cell">4</div>
+            <div class="cell" id="27">6</div>
+            <div class="cell alinhar-direita" id="407">VIII</div>
+            <div class="cell" id="45">4</div>
           </div>
-  
+
           <div class="row">
-            <div class="cell">7</div>
-            <div class="cell alinhar-direita">VII</div>
-            <div class="cell">3</div>
+            <div class="cell" id="28">7</div>
+            <div class="cell alinhar-direita" id="406">VII</div>
+            <div class="cell" id="44">3</div>
           </div>
-  
+
           <div class="row">
-            <div class="cell">8</div>
-            <div class="cell alinhar-direita">VI</div>
-            <div class="cell">2</div>
+            <div class="cell" id="29">8</div>
+            <div class="cell alinhar-direita" id="405">VI</div>
+            <div class="cell" id="43">2</div>
           </div>
-  
+
           <div class="row">
-            <div class="cell">9</div>
-            <div class="cell alinhar-direita">V</div>
-            <div class="cell">1</div>
+            <div class="cell" id="30">9</div>
+            <div class="cell alinhar-direita" id="404">V</div>
+            <div class="cell" id="42">1</div>
           </div>
-  
+
           <div class="row">
-            <div class="cell">F</div>
-            <div class="cell alinhar-direita">IV</div>
-            <div class="cell">F</div>
+            <div class="cell" id="31">F</div>
+            <div class="cell alinhar-direita" id="403">IV</div>
+            <div class="cell start-yellow" id="41">F</div>
           </div>
-  
+
           <div class="row">
-            <div class="cell">11</div>
-            <div class="cell alinhar-direita">III</div>
-            <div class="cell">19</div>
+            <div class="cell" id="32">11</div>
+            <div class="cell alinhar-direita" id="402">III</div>
+            <div class="cell" id="40">19</div>
           </div>
-  
+
           <div class="row">
-            <div class="cell">12</div>
-            <div class="cell alinhar-direita">II</div>
-            <div class="cell">18</div>
+            <div class="cell" id="33">12</div>
+            <div class="cell alinhar-direita" id="401">II</div>
+            <div class="cell" id="39">18</div>
           </div>
-  
+
           <div class="row">
-            <div class="cell">13</div>
-            <div class="cell alinhar-direita">I</div>
-            <div class="cell">17</div>
+            <div class="cell" id="34">13</div>
+            <div class="cell alinhar-direita" id="400">I</div>
+            <div class="cell" id="38">17</div>
           </div>
-  
+
           <div class="row">
-            <div class="cell">14</div>
-            <div class="cell" id="entrada-h">FICHA</div>
-            <div class="cell">16</div>
+            <div class="cell" id="35">14</div>
+            <div class="cell 36" id="entrada-h">FICHA</div>
+            <div class="cell" id="37">16</div>
           </div>
         </div>
-  
-        <div class="yellow-box">
-          
+
+        <div class="yellow-box player-base" id="P4">
+          <div class="white-box">
+            <div>
+              <div class="piece 800" id="piece-yellow-1"></div>
+              <div class="piece 801" id="piece-yellow-2"></div>
+            </div>
+
+            <div>
+              <div class="piece 802" id="piece-yellow-3"></div>
+              <div class="piece 803" id="piece-yellow-4"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  
+
+    <!--dice-->
 
 
+    <div class="container-dice">
+      <div id='dice1' class="dice dice-one">
+        <div id="dice-one-side-one" class='side one'>
+          <div class="dot one-1"></div>
+        </div>
+        <div id="dice-one-side-two" class='side two'>
+          <div class="dot two-1"></div>
+          <div class="dot two-2"></div>
+        </div>
+        <div id="dice-one-side-three" class='side three'>
+          <div class="dot three-1"></div>
+          <div class="dot three-2"></div>
+          <div class="dot three-3"></div>
+        </div>
+        <div id="dice-one-side-four" class='side four'>
+          <div class="dot four-1"></div>
+          <div class="dot four-2"></div>
+          <div class="dot four-3"></div>
+          <div class="dot four-4"></div>
+        </div>
+        <div id="dice-one-side-five" class='side five'>
+          <div class="dot five-1"></div>
+          <div class="dot five-2"></div>
+          <div class="dot five-3"></div>
+          <div class="dot five-4"></div>
+          <div class="dot five-5"></div>
+        </div>
+        <div id="dice-one-side-six" class='side six'>
+          <div class="dot six-1"></div>
+          <div class="dot six-2"></div>
+          <div class="dot six-3"></div>
+          <div class="dot six-4"></div>
+          <div class="dot six-5"></div>
+          <div class="dot six-6"></div>
+        </div>
+      </div>
+    </div>
+    <div class="container-dice">
+      <div id='dice2' class="dice dice-two">
+        <div id="dice-two-side-one" class='side one'>
+          <div class="dot one-1"></div>
+        </div>
+        <div id="dice-two-side-two" class='side two'>
+          <div class="dot two-1"></div>
+          <div class="dot two-2"></div>
+        </div>
+        <div id="dice-two-side-three" class='side three'>
+          <div class="dot three-1"></div>
+          <div class="dot three-2"></div>
+          <div class="dot three-3"></div>
+        </div>
+        <div id="dice-two-side-four" class='side four'>
+          <div class="dot four-1"></div>
+          <div class="dot four-2"></div>
+          <div class="dot four-3"></div>
+          <div class="dot four-4"></div>
+        </div>
+        <div id="dice-two-side-five" class='side five'>
+          <div class="dot five-1"></div>
+          <div class="dot five-2"></div>
+          <div class="dot five-3"></div>
+          <div class="dot five-4"></div>
+          <div class="dot five-5"></div>
+        </div>
+        <div id="dice-two-side-six" class='side six'>
+          <div class="dot six-1"></div>
+          <div class="dot six-2"></div>
+          <div class="dot six-3"></div>
+          <div class="dot six-4"></div>
+          <div class="dot six-5"></div>
+          <div class="dot six-6"></div>
+        </div>
+      </div>
+    </div>
+    <div id='roll' class='roll-button'>
+      <h2 class="active-player">Jogador Activo : <span>XX</span></h2>
+      <button>Roll dice!</button>
+      <h2 class="escolher-dado ocultar">Escolha o dado!</h2>
+    </div>
 
   </div>
+  <script type="module" src="../js/Ludo.js"></script>
 
-  
+
 
 </body>
 
