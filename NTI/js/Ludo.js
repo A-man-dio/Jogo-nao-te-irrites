@@ -7,9 +7,13 @@ export class Ludo {
         this.listenDiceClick();
         this.listenPieceClick();
         this.resetGame();
+        this.setPiecePosition("P1" , 1 , 80);
+        this.setPiecePosition("P1" , 0 , 1);
+        this.setPiecePosition("P2" , 0 , 1);
 
-       
-        
+
+
+
 
     }
 
@@ -23,6 +27,8 @@ export class Ludo {
     _rolarDado1OuDado2OutraVez = 0; //vai receber 1 se for para rodar denovo o dado 1 e 2 se for para rodar denovo o dado 2
 
     _setarValorDado = true; //obrigar a que saia um numero no dado , só para teste
+
+    _entrou = false;
 
     _turn;    //turno do jogador
     get turn() {
@@ -147,11 +153,11 @@ export class Ludo {
         }
 
 
-        /*if (this._setarValorDado) {
+        if (this._setarValorDado) {
             this.diceOne = 1;
-            this.diceTwo = 1;
+            this.diceTwo = 6;
             this._setarValorDado = false;
-        }*/
+        }
 
         this.resultado = this.diceOne + this.diceTwo;
         console.log(this._diceOne + ' ' + this._diceTwo);
@@ -283,6 +289,9 @@ export class Ludo {
         if (this.Matou) {
             this.dadoActual = 20;
             this.Matou = false;
+        } else if(this._entrou){
+            this.dadoActual = 10;
+            this._entrou = false;
         } else {
             this.dadoActual = (this.vezDados[0] == 1) ? this.diceOne : this.diceTwo;
         }
@@ -296,6 +305,11 @@ export class Ludo {
         } else {
             //this.checkForEligiblePieces2();
             console.log("n elegivel");
+
+            if ( (this.dadoActual == 10) || (this.dadoActual == 20) ){
+                this.checkForEligiblePieces2();
+                return;
+            }
 
             if (this.possibilidadeErrada === 2) {
                 this.possibilidadeErrada = 0;
@@ -320,6 +334,9 @@ export class Ludo {
         if (this.Matou) {
             this.dadoActual = 20;
             this.Matou = false;
+        }else if(this._entrou){
+            this.dadoActual = 10;
+            this._entrou = false;
         } else {
             this.dadoActual = (this.vezDados[1] == 1) ? this.diceOne : this.diceTwo;
         }
@@ -347,7 +364,11 @@ export class Ludo {
                 return false;
             }
 
-            if ((this.dadoActual == 20) && (this.dadoActual > home_positions[player] - currentPosition)) {
+            if ((home_entrance[player].includes(currentPosition)) && (this.dadoActual > home_positions[player] - currentPosition)) {
+                return false;
+            }
+
+            if ((this.dadoActual == 20) && (this.dadoActual > turning_points[player] - currentPosition + 10)) {
                 return false;
             }
 
@@ -355,8 +376,12 @@ export class Ludo {
                 return false
             }
 
-            if ((home_entrance[player].includes(currentPosition)) && (this.dadoActual > home_positions[player] - currentPosition)) {
+            if ((this.dadoActual == 10) && (this.dadoActual > turning_points[player] - currentPosition + 10)) {
                 return false;
+            }
+
+            if ((this.dadoActual == 10) && (base_positions[player].includes(currentPosition))) {
+                return false
             }
 
             //
@@ -530,6 +555,17 @@ export class Ludo {
                     this.resetGame();
                     return;
                 }
+
+                if ((home_positions[player] == (this.currentPositions[player][piece]) && (this.turnoDado == 1))) {
+                    this._entrou = true;
+                    this.checkForEligiblePieces1();
+                    return;
+                } else if ((home_positions[player] == (this.currentPositions[player][piece]) && (this.turnoDado == 2))){
+                    this._entrou = true;
+                    this.checkForEligiblePieces2();
+                    return;
+                }
+
 
                 const isKill = this.checkForKill(player, piece);
 
