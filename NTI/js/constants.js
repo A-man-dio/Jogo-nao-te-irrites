@@ -345,6 +345,32 @@ export const choose = {
 }
 
 
-export const players = ["P1", "P2", "P3", "P4"];
+var numeroJogadores;
+var array = [];
+
+document.getElementById('numeroJogadores').addEventListener('change', function(){
+    numeroJogadores = parseInt(this.value, 10);
+});
+
+document.getElementById('btnConfirmar').addEventListener('click', function() {
+    if (numeroJogadores) {
+      definirJogadores(numeroJogadores);
+    } else {
+      alert('Por favor, selecione o número de jogadores.');
+    }
+  });
+
+function definirJogadores(numeroJogadores){
+
+    if(numeroJogadores == 2)
+        array = ["P1", "P2"];
+    else if(numeroJogadores == 3)
+        array = ["P1", "P2", "P3"];
+    else
+        array = ["P1", "P2", "P3", "P4"];
+    
+}
+
+export const players = array;
 
 export const playersB = ["red-box", "green-box", "blue-box", "P4-box"];
