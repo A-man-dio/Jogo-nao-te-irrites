@@ -7,6 +7,10 @@ export class Ludo {
         this.listenDiceClick();
         this.listenPieceClick();
         this.resetGame();
+        this.setPiecePosition("P1" , 0 , 1);
+        this.setPiecePosition("P1" , 1 , 58);
+        this.setPiecePosition("P1" , 2 , 60);
+        this.setPiecePosition("P3" , 0 , 8);
     }
 
     currentPositions = {
@@ -16,26 +20,28 @@ export class Ludo {
         P4: [],
     }
 
-    _setarValorDado = true;
+    _rolarDado1OuDado2OutraVez = 0; //vai receber 1 se for para rodar denovo o dado 1 e 2 se for para rodar denovo o dado 2
 
-    _turn;
+    _setarValorDado = true; //obrigar a que saia um numero no dado , só para teste
+
+    _turn;    //turno do jogador
     get turn() {
         return this._turn;
     }
     set turn(value) {
         this._turn = value;
-        UI.setTurn(value);
+        UI.setTurn(value);  //setar o turno do jogador seguinte , value pode receber 0 ,1 ,2 ,3
     }
 
-    _qtdVezesRolarDadoDepoisMatanca = 0;
-    get qtdVezesRolarDadoDepoisMatanca() {
-        return this._qtdVezesRolarDadoDepoisMatanca;
+    _Matou = false;
+    get Matou() {
+        return this._Matou;
     }
-    set qtdVezesRolarDadoDepoisMatanca(value) {
-        this._qtdVezesRolarDadoDepoisMatanca = value;
+    set Matou(value) {
+        this._Matou = value;
     }
 
-    _possibilidadeErrada = 0;
+    _possibilidadeErrada = 0; //nos casos em que sair por exemplo , 1 e 6 , sendo que todos os pinos estão na base , e o jogador escolhe 1 por exemplo , ele automaticamente tem que escolher o 6 primeiro só depois o 1. esta variavel recebe 0 ou 1 , 0 (não existe possibilidade errada) , 1 (existe possibilidade errada)
     get possibilidadeErrada() {
         return this._possibilidadeErrada;
     }
@@ -43,7 +49,7 @@ export class Ludo {
         this._possibilidadeErrada = value;
     }
 
-    _dadoActual;
+    _dadoActual; //dado actual na qual estamos a fazer a jogada (pois existem 2 dados)
     get dadoActual() {
         return this._dadoActual;
     }
@@ -51,7 +57,7 @@ export class Ludo {
         this._dadoActual = value;
     }
 
-    _turnoDado;
+    _turnoDado; //se estamos no turno do dado 1 ou no turno do dado 2
     get turnoDado() {
         return this._turnoDado;
     }
@@ -59,8 +65,7 @@ export class Ludo {
         this._turnoDado = value;
     }
 
-
-    _state;
+    _state; //estado do dado (se ja foi rolado ou não foi rolado)
     get state() {
         return this._state;
     }
@@ -75,7 +80,7 @@ export class Ludo {
         }
     }
 
-    _chooseDice;
+    _chooseDice; //variavel para ver se após rolar os dados , eles já foram escolhidos ou não
     get chooseDice() {
         return this._chooseDice;
     }
@@ -89,16 +94,15 @@ export class Ludo {
         UI.listenDiceClick(this.onDiceClick.bind(this));
     }
 
-    _vezDados = new Array(2);
+    _vezDados = new Array(2); // array que recebe [1 , 2] ou [2 , 1] se for a ordem de execução dos dados , por exemplo [1 , 2] o dado 1 jogará primeiro e so depois o dado 2
     get vezDados() {
         return this._vezDados;
     }
-
     set vezDados(value) {
         this._vezDados = value;
     }
 
-    _diceOne = 0;
+    _diceOne = 0; //dado 1
     get diceOne() {
         return this._diceOne;
     }
@@ -106,7 +110,7 @@ export class Ludo {
         this._diceOne = value;
     }
 
-    _diceTwo = 0;
+    _diceTwo = 0; //dado 2
     get diceTwo() {
         return this._diceTwo;
     }
@@ -114,7 +118,7 @@ export class Ludo {
         this._diceTwo = value;
     }
 
-    _resultado = 0; //variaveis onde ficam armazenados os valores dos dados
+    _resultado = 0; //resultado da soma dos dados
     get resultado() {
         return this._resultado;
     }
@@ -128,15 +132,26 @@ export class Ludo {
         var dice1 = document.getElementById('dice1');
         var dice2 = document.getElementById('dice2');
 
-        this.diceOne = Math.floor((Math.random() * 6) + 1);
-        this.diceTwo = Math.floor((Math.random() * 6) + 1);
+        if (this._rolarDado1OuDado2OutraVez == 0) {
+            this.diceOne = Math.floor((Math.random() * 6) + 1);
+            this.diceTwo = Math.floor((Math.random() * 6) + 1);
+            console.log("rolar 0");
+        } else if (this._rolarDado1OuDado2OutraVez == 1) {
+            this.diceOne = Math.floor((Math.random() * 6) + 1);
+            this.chooseDice = choose.chose_dice;
+            console.log("rolar 1");
+        } else if (this._rolarDado1OuDado2OutraVez == 2) {
+            this.diceTwo = Math.floor((Math.random() * 6) + 1);
+            this.chooseDice = choose.chose_dice;
+            console.log("rolar 2");
+        }
 
-        
-        /*if(this._setarValorDado){
+
+        if(this._setarValorDado){
             this.diceOne = 1;
-            this.diceTwo = 1;
+            this.diceTwo = 6;
             this._setarValorDado = false;
-        }*/
+        }
 
         this.resultado = this.diceOne + this.diceTwo;
         console.log(this._diceOne + ' ' + this._diceTwo);
@@ -154,11 +169,12 @@ export class Ludo {
             }
         }
 
-        //verificar se os dados 1 ou 2 não possuem 6 e se todas peças tão na base então pular turno
         this.state = state.dice_rolled;
+        //verificar se os dados 1 ou 2 não possuem 6 e se todas peças tão na base então pular turno
+
         const player = players[this.turn];
 
-        const verificarTodasPecasNaPosicaoBase = [0 , 1 ,2 , 3].filter(piece => {
+        const verificarTodasPecasNaPosicaoBase = [0, 1, 2, 3].filter(piece => {
             var position = this.currentPositions[player][piece];
 
             if ((base_positions[player].includes(position))) {
@@ -166,22 +182,64 @@ export class Ludo {
             }
         });
 
-        if ( (verificarTodasPecasNaPosicaoBase.length === 4) && (this.diceOne !== 6) && (this.diceTwo !== 6) ){
-            this.incrementTurn();
-            return;
+
+        if (this._rolarDado1OuDado2OutraVez == 0) {
+            if ((verificarTodasPecasNaPosicaoBase.length === 4) && (this.diceOne !== 6) && (this.diceTwo !== 6)) {
+                this.incrementTurn();
+                return;
+            }
+        } else if (this._rolarDado1OuDado2OutraVez == 1) {
+            if ((verificarTodasPecasNaPosicaoBase.length === 4) && (this.diceOne !== 6)) {
+                this.incrementTurn();
+                return;
+            }
+        } else if (this._rolarDado1OuDado2OutraVez == 2) {
+            if ((verificarTodasPecasNaPosicaoBase.length === 4) && (this.diceTwo !== 6)) {
+                this.incrementTurn();
+                return;
+            }
         }
+
         //
 
 
         //
+
         var escolhaDado = document.getElementsByClassName("escolher-dado")[0];
         var containerDice = document.getElementsByClassName("container-dice");
+        if (this._rolarDado1OuDado2OutraVez == 0) {
+            containerDice[0].classList.add("hover-effect");
+            containerDice[1].classList.add("hover-effect");
+            escolhaDado.classList.remove("ocultar");
+            containerDice[0].addEventListener('click', this.handleClickContainer1.bind(this));
+            containerDice[1].addEventListener('click', this.handleClickContainer2.bind(this));
 
-        containerDice[0].classList.add("hover-effect");
-        containerDice[1].classList.add("hover-effect");
-        escolhaDado.classList.remove("ocultar");
-        containerDice[0].addEventListener('click', this.handleClickContainer1.bind(this));
-        containerDice[1].addEventListener('click', this.handleClickContainer2.bind(this));
+            //this._rolarDado1OuDado2OutraVez = ((this.diceOne == 6) && (this.diceTwo == 6)) ? 0 : ((this.diceOne == 6) ? 1 : 2);
+
+            if ((this.diceOne == 6) && (this.diceTwo == 6)) {
+                this._rolarDado1OuDado2OutraVez = 0;
+            } else if (this.diceOne == 6) {
+                this._rolarDado1OuDado2OutraVez = 1;
+            } else if (this.diceTwo == 6) {
+                this._rolarDado1OuDado2OutraVez = 2;
+            } else {
+                this._rolarDado1OuDado2OutraVez = 0;
+            }
+
+        } else if (this._rolarDado1OuDado2OutraVez == 1) {
+
+            this._rolarDado1OuDado2OutraVez = (this.diceOne == 6) ? 1 : 0;
+            this.vezDados[1] = 1;
+            this.checkForEligiblePieces2();
+
+        } else if (this._rolarDado1OuDado2OutraVez == 2) {
+
+            this._rolarDado1OuDado2OutraVez = (this.diceTwo == 6) ? 2 : 0;
+            this.vezDados[1] = 2;
+            this.checkForEligiblePieces2();
+        }
+
+
         //
     }
     //
@@ -199,7 +257,6 @@ export class Ludo {
         containerDice[1].classList.remove("hover-effect");
         escolhaDado.classList.add("ocultar");
         this.chooseDice = choose.chose_dice;
-        console.log(this.vezDados);
         this.checkForEligiblePieces1();
     }
 
@@ -215,14 +272,20 @@ export class Ludo {
         containerDice[1].classList.remove("hover-effect");
         escolhaDado.classList.add("ocultar");
         this.chooseDice = choose.chose_dice;
-        console.log(this.vezDados);
         this.checkForEligiblePieces1();
     }
 
 
     checkForEligiblePieces1() {
         this.turnoDado = 1;
-        this.dadoActual = (this.vezDados[0] == 1) ? this.diceOne : this.diceTwo;
+
+        if (this.Matou){
+            this.dadoActual = 20;
+            this.Matou = false;
+        }else{
+            this.dadoActual = (this.vezDados[0] == 1) ? this.diceOne : this.diceTwo;
+        }
+        
         const player = players[this.turn];
         // eligible pieces of given player
         const eligiblePieces = this.getEligiblePieces(player);
@@ -231,13 +294,12 @@ export class Ludo {
             UI.highlightPieces(player, eligiblePieces);
         } else {
             //this.checkForEligiblePieces2();
+            console.log("n elegivel");
 
-            if(this.possibilidadeErrada === 1){
-                this.checkForEligiblePieces2();
+            if (this.possibilidadeErrada === 1) {
                 this.possibilidadeErrada = 0;
-                return;
             }
-
+            console.log("trocou 1");
             var aux;
             aux = this.vezDados[0];
             this.vezDados[0] = this.vezDados[1];
@@ -248,8 +310,16 @@ export class Ludo {
     }
 
     checkForEligiblePieces2() {
+        console.log(this.vezDados);
         this.turnoDado = 2;
-        this.dadoActual = (this.vezDados[1] == 1) ? this.diceOne : this.diceTwo;
+
+        if (this.Matou) {
+            this.dadoActual = 20;
+            this.Matou = false;
+        } else {
+            this.dadoActual = (this.vezDados[1] == 1) ? this.diceOne : this.diceTwo;
+        }
+
         const player = players[this.turn];
         // eligible pieces of given player
         const eligiblePieces = this.getEligiblePieces(player);
@@ -273,7 +343,11 @@ export class Ludo {
                 return false;
             }
 
-            if ((home_entrance[player].includes(currentPosition)) && (this.resultado > home_positions[player] - currentPosition)) {
+            if ((this.dadoActual == 20) && (this.dadoActual > home_positions[player] - currentPosition)) {
+                return false;
+            }
+
+            if ((home_entrance[player].includes(currentPosition)) && (this.dadoActual > home_positions[player] - currentPosition)) {
                 return false;
             }
 
@@ -321,10 +395,10 @@ export class Ludo {
         const currentPosition = this.currentPositions[player][piece];
 
         if ((base_positions[player].includes(currentPosition)) && (this.dadoActual === 6)) {
-            console.log("veio aqui");
             this.setPiecePosition(player, piece, start_positions[player]);
 
             if (this.turnoDado === 2) {
+                console.log("trocou 2");
                 this.state = state.dice_not_rolled; //rodar denovo
             } else {
                 UI.unhighlightPieces();
@@ -364,11 +438,17 @@ export class Ludo {
 
                 const isKill = this.checkForKill(player, piece);
 
-                if ((isKill)) {
-                    this.qtdVezesRolarDadoDepoisMatanca++;
+                if ((isKill) && (this.turnoDado == 1)) {
+                    this.Matou = true;
+                    this.checkForEligiblePieces1();
+                    return
+                }else if ( (isKill) && (this.turnoDado == 2) ){
+                    this.Matou = true;
+                    this.checkForEligiblePieces2();
+                    return;
                 }
 
-                if ( ((this.diceOne === 6) || (this.diceTwo === 6)) && (this.turnoDado === 2 ) ){
+                if ((((this.diceOne === 6) || (this.diceTwo === 6))) && (this.turnoDado === 2)) {
                     console.log("porque");
                     this.state = state.dice_not_rolled;
                     return;
@@ -379,12 +459,6 @@ export class Ludo {
                     this.checkForEligiblePieces2();
                 } else {
                     console.log("333");
-
-                    if (this.qtdVezesRolarDadoDepoisMatanca){
-                        this.state = state.dice_not_rolled;
-                        this.qtdVezesRolarDadoDepoisMatanca--;
-                        return;
-                    }
                     this.incrementTurn();
                 }
             }
@@ -409,6 +483,7 @@ export class Ludo {
 
     incrementTurn() {
         this.turn = (this.turn === 3) ? 0 : this.turn + 1;
+        this._rolarDado1OuDado2OutraVez = 0;
         this.state = state.dice_not_rolled;
     }
 

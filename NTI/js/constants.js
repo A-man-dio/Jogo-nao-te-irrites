@@ -1,3 +1,4 @@
+
 export const coordenadas = {
     1: [document.getElementById("1").getBoundingClientRect().left, document.getElementById("1").getBoundingClientRect().top],
 
@@ -160,93 +161,93 @@ export const coordenadas = {
     80: [document.getElementById("80").getBoundingClientRect().left, document.getElementById("80").getBoundingClientRect().top],
 
     //100 entrada vermelha
-    100: [document.getElementById("100").getBoundingClientRect().left, document.getElementById("100").getBoundingClientRect().top],
+    100: [document.getElementById("100").getBoundingClientRect().left + 22, document.getElementById("100").getBoundingClientRect().top],
 
-    101: [document.getElementById("101").getBoundingClientRect().left, document.getElementById("101").getBoundingClientRect().top],
+    101: [document.getElementById("101").getBoundingClientRect().left + 22, document.getElementById("101").getBoundingClientRect().top],
 
-    102: [document.getElementById("102").getBoundingClientRect().left, document.getElementById("102").getBoundingClientRect().top],
+    102: [document.getElementById("102").getBoundingClientRect().left + 22, document.getElementById("102").getBoundingClientRect().top],
 
-    103: [document.getElementById("103").getBoundingClientRect().left, document.getElementById("103").getBoundingClientRect().top],
+    103: [document.getElementById("103").getBoundingClientRect().left + 22, document.getElementById("103").getBoundingClientRect().top],
 
-    104: [document.getElementById("104").getBoundingClientRect().left, document.getElementById("104").getBoundingClientRect().top],
+    104: [document.getElementById("104").getBoundingClientRect().left + 22, document.getElementById("104").getBoundingClientRect().top],
 
-    105: [document.getElementById("105").getBoundingClientRect().left, document.getElementById("105").getBoundingClientRect().top],
+    105: [document.getElementById("105").getBoundingClientRect().left + 22, document.getElementById("105").getBoundingClientRect().top],
 
-    106: [document.getElementById("106").getBoundingClientRect().left, document.getElementById("106").getBoundingClientRect().top],
+    106: [document.getElementById("106").getBoundingClientRect().left + 22, document.getElementById("106").getBoundingClientRect().top],
 
-    107: [document.getElementById("107").getBoundingClientRect().left, document.getElementById("107").getBoundingClientRect().top],
+    107: [document.getElementById("107").getBoundingClientRect().left + 22, document.getElementById("107").getBoundingClientRect().top],
 
-    108: [document.getElementById("108").getBoundingClientRect().left, document.getElementById("108").getBoundingClientRect().top],
+    108: [document.getElementById("108").getBoundingClientRect().left + 22, document.getElementById("108").getBoundingClientRect().top],
 
-    109: [document.getElementById("109").getBoundingClientRect().left, document.getElementById("109").getBoundingClientRect().top],
+    109: [document.getElementById("109").getBoundingClientRect().left + 60 , document.getElementById("109").getBoundingClientRect().top],
 
     //200 entrada azul
 
-    200: [document.getElementById("200").getBoundingClientRect().left, document.getElementById("200").getBoundingClientRect().top],
+    200: [document.getElementById("200").getBoundingClientRect().left, document.getElementById("200").getBoundingClientRect().top + 22],
 
-    201: [document.getElementById("201").getBoundingClientRect().left, document.getElementById("201").getBoundingClientRect().top],
+    201: [document.getElementById("201").getBoundingClientRect().left, document.getElementById("201").getBoundingClientRect().top + 22],
 
-    202: [document.getElementById("202").getBoundingClientRect().left, document.getElementById("202").getBoundingClientRect().top],
+    202: [document.getElementById("202").getBoundingClientRect().left, document.getElementById("202").getBoundingClientRect().top + 22],
 
-    203: [document.getElementById("203").getBoundingClientRect().left, document.getElementById("203").getBoundingClientRect().top],
+    203: [document.getElementById("203").getBoundingClientRect().left, document.getElementById("203").getBoundingClientRect().top + 22],
 
-    204: [document.getElementById("204").getBoundingClientRect().left, document.getElementById("204").getBoundingClientRect().top],
+    204: [document.getElementById("204").getBoundingClientRect().left, document.getElementById("204").getBoundingClientRect().top + 22],
 
-    205: [document.getElementById("205").getBoundingClientRect().left, document.getElementById("205").getBoundingClientRect().top],
+    205: [document.getElementById("205").getBoundingClientRect().left, document.getElementById("205").getBoundingClientRect().top + 22],
 
-    206: [document.getElementById("206").getBoundingClientRect().left, document.getElementById("206").getBoundingClientRect().top],
+    206: [document.getElementById("206").getBoundingClientRect().left, document.getElementById("206").getBoundingClientRect().top + 22],
 
-    207: [document.getElementById("207").getBoundingClientRect().left, document.getElementById("207").getBoundingClientRect().top],
+    207: [document.getElementById("207").getBoundingClientRect().left, document.getElementById("207").getBoundingClientRect().top + 22],
 
-    208: [document.getElementById("208").getBoundingClientRect().left, document.getElementById("208").getBoundingClientRect().top],
+    208: [document.getElementById("208").getBoundingClientRect().left, document.getElementById("208").getBoundingClientRect().top + 22],
 
-    209: [document.getElementById("209").getBoundingClientRect().left, document.getElementById("209").getBoundingClientRect().top],
+    209: [document.getElementById("209").getBoundingClientRect().left, document.getElementById("209").getBoundingClientRect().top + 60],
 
 
 
     //300 entrada verde
 
-    300: [document.getElementById("300").getBoundingClientRect().left, document.getElementById("300").getBoundingClientRect().top],
+    300: [document.getElementById("300").getBoundingClientRect().left, document.getElementById("300").getBoundingClientRect().top + 22],
 
-    301: [document.getElementById("301").getBoundingClientRect().left, document.getElementById("301").getBoundingClientRect().top],
+    301: [document.getElementById("301").getBoundingClientRect().left, document.getElementById("301").getBoundingClientRect().top + 22],
 
-    302: [document.getElementById("302").getBoundingClientRect().left, document.getElementById("302").getBoundingClientRect().top],
+    302: [document.getElementById("302").getBoundingClientRect().left, document.getElementById("302").getBoundingClientRect().top + 22],
 
-    303: [document.getElementById("303").getBoundingClientRect().left, document.getElementById("303").getBoundingClientRect().top],
+    303: [document.getElementById("303").getBoundingClientRect().left, document.getElementById("303").getBoundingClientRect().top + 22],
 
-    304: [document.getElementById("304").getBoundingClientRect().left, document.getElementById("304").getBoundingClientRect().top],
+    304: [document.getElementById("304").getBoundingClientRect().left, document.getElementById("304").getBoundingClientRect().top + 22],
 
-    305: [document.getElementById("305").getBoundingClientRect().left, document.getElementById("305").getBoundingClientRect().top],
+    305: [document.getElementById("305").getBoundingClientRect().left, document.getElementById("305").getBoundingClientRect().top + 22],
 
-    306: [document.getElementById("306").getBoundingClientRect().left, document.getElementById("306").getBoundingClientRect().top],
+    306: [document.getElementById("306").getBoundingClientRect().left, document.getElementById("306").getBoundingClientRect().top + 22],
 
-    307: [document.getElementById("307").getBoundingClientRect().left, document.getElementById("307").getBoundingClientRect().top],
+    307: [document.getElementById("307").getBoundingClientRect().left, document.getElementById("307").getBoundingClientRect().top + 22],
 
-    308: [document.getElementById("308").getBoundingClientRect().left, document.getElementById("308").getBoundingClientRect().top],
+    308: [document.getElementById("308").getBoundingClientRect().left, document.getElementById("308").getBoundingClientRect().top + 22 ],
 
-    309: [document.getElementById("309").getBoundingClientRect().left, document.getElementById("309").getBoundingClientRect().top],
+    309: [document.getElementById("309").getBoundingClientRect().left + 120, document.getElementById("309").getBoundingClientRect().top + 60],
 
     //400 entrada amarela
 
-    400: [document.getElementById("400").getBoundingClientRect().left, document.getElementById("400").getBoundingClientRect().top],
+    400: [document.getElementById("400").getBoundingClientRect().left + 22, document.getElementById("400").getBoundingClientRect().top],
 
-    401: [document.getElementById("401").getBoundingClientRect().left, document.getElementById("401").getBoundingClientRect().top],
+    401: [document.getElementById("401").getBoundingClientRect().left + 22, document.getElementById("401").getBoundingClientRect().top],
 
-    402: [document.getElementById("402").getBoundingClientRect().left, document.getElementById("402").getBoundingClientRect().top],
+    402: [document.getElementById("402").getBoundingClientRect().left + 22, document.getElementById("402").getBoundingClientRect().top],
 
-    403: [document.getElementById("403").getBoundingClientRect().left, document.getElementById("403").getBoundingClientRect().top],
+    403: [document.getElementById("403").getBoundingClientRect().left + 22, document.getElementById("403").getBoundingClientRect().top],
 
-    404: [document.getElementById("404").getBoundingClientRect().left, document.getElementById("404").getBoundingClientRect().top],
+    404: [document.getElementById("404").getBoundingClientRect().left + 22, document.getElementById("404").getBoundingClientRect().top],
 
-    405: [document.getElementById("405").getBoundingClientRect().left, document.getElementById("405").getBoundingClientRect().top],
+    405: [document.getElementById("405").getBoundingClientRect().left + 22, document.getElementById("405").getBoundingClientRect().top],
 
-    406: [document.getElementById("406").getBoundingClientRect().left, document.getElementById("406").getBoundingClientRect().top],
+    406: [document.getElementById("406").getBoundingClientRect().left + 22, document.getElementById("406").getBoundingClientRect().top],
 
-    407: [document.getElementById("407").getBoundingClientRect().left, document.getElementById("407").getBoundingClientRect().top],
+    407: [document.getElementById("407").getBoundingClientRect().left + 22, document.getElementById("407").getBoundingClientRect().top],
 
-    408: [document.getElementById("408").getBoundingClientRect().left, document.getElementById("408").getBoundingClientRect().top],
+    408: [document.getElementById("408").getBoundingClientRect().left + 22, document.getElementById("408").getBoundingClientRect().top],
 
-    409: [document.getElementById("409").getBoundingClientRect().left, document.getElementById("409").getBoundingClientRect().top],
+    409: [document.getElementById("409").getBoundingClientRect().left + 60, document.getElementById("409").getBoundingClientRect().top + 120],
 
 
     //base position
