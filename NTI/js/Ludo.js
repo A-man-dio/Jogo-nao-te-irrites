@@ -7,10 +7,10 @@ export class Ludo {
         this.listenDiceClick();
         this.listenPieceClick();
         this.resetGame();
-        this.setPiecePosition("P1" , 0 , 1);
-        this.setPiecePosition("P1" , 1 , 58);
-        this.setPiecePosition("P1" , 2 , 60);
-        this.setPiecePosition("P3" , 0 , 8);
+
+       
+        
+
     }
 
     currentPositions = {
@@ -147,11 +147,11 @@ export class Ludo {
         }
 
 
-        if(this._setarValorDado){
+        /*if (this._setarValorDado) {
             this.diceOne = 1;
-            this.diceTwo = 6;
+            this.diceTwo = 1;
             this._setarValorDado = false;
-        }
+        }*/
 
         this.resultado = this.diceOne + this.diceTwo;
         console.log(this._diceOne + ' ' + this._diceTwo);
@@ -277,15 +277,16 @@ export class Ludo {
 
 
     checkForEligiblePieces1() {
+        console.log(this.vezDados);
         this.turnoDado = 1;
 
-        if (this.Matou){
+        if (this.Matou) {
             this.dadoActual = 20;
             this.Matou = false;
-        }else{
+        } else {
             this.dadoActual = (this.vezDados[0] == 1) ? this.diceOne : this.diceTwo;
         }
-        
+
         const player = players[this.turn];
         // eligible pieces of given player
         const eligiblePieces = this.getEligiblePieces(player);
@@ -296,9 +297,12 @@ export class Ludo {
             //this.checkForEligiblePieces2();
             console.log("n elegivel");
 
-            if (this.possibilidadeErrada === 1) {
+            if (this.possibilidadeErrada === 2) {
                 this.possibilidadeErrada = 0;
+                this.incrementTurn();
+                return;
             }
+
             console.log("trocou 1");
             var aux;
             aux = this.vezDados[0];
@@ -333,7 +337,7 @@ export class Ludo {
 
     getEligiblePieces(player) {
         return [0, 1, 2, 3].filter(piece => {
-            const currentPosition = this.currentPositions[player][piece];
+            var currentPosition = this.currentPositions[player][piece];
 
             if (currentPosition === home_positions[player]) {
                 return false;
@@ -347,12 +351,87 @@ export class Ludo {
                 return false;
             }
 
+            if ((this.dadoActual == 20) && (base_positions[player].includes(currentPosition))) {
+                return false
+            }
+
             if ((home_entrance[player].includes(currentPosition)) && (this.dadoActual > home_positions[player] - currentPosition)) {
                 return false;
             }
 
+            //
+
+            var possibleCurrentPosition = currentPosition + this.dadoActual;
+            currentPosition = (possibleCurrentPosition > 80) ? currentPosition - 80 : currentPosition;
+            possibleCurrentPosition = (possibleCurrentPosition > 80) ? (possibleCurrentPosition - 80) : possibleCurrentPosition;
+
+            var eligible = true;
+
+            this.getPositionsWhereTwoOrMorePiecesAre().forEach(position => {
+                if ((possibleCurrentPosition >= position) && (currentPosition < position)) {
+                    eligible = false;
+                }
+            });
+
+            if (!eligible) {
+                return false;
+            }
+
+            //
+
+
             return true;
         });
+    }
+
+    getPositionsWhereTwoOrMorePiecesAre() {
+        var allPositions = [];
+        var positionsWhereTwoOrMorePiecesAre = [];
+
+        Object.values(this.currentPositions).forEach(player => {
+            [0, 1, 2, 3].forEach(piece => {
+                allPositions.push(player[piece]);
+            });
+        });
+
+        for (var i = 0; i < allPositions.length; i++) {
+            var aux = 0;
+            for (var j = i + 1; j < allPositions.length; j++) {
+                if ((allPositions[i] == allPositions[j]) && (aux == 0)) {
+                    positionsWhereTwoOrMorePiecesAre.push(allPositions[i]);
+                    aux = 1;
+                }
+            }
+        }
+
+        return positionsWhereTwoOrMorePiecesAre;
+    }
+
+    getPositionsWhereThreeOrMorePiecesAre() {
+        var allPositions = [];
+        var positionsWhereThreeOrMorePiecesAre = [];
+
+        Object.values(this.currentPositions).forEach(player => {
+            [0, 1, 2, 3].forEach(piece => {
+                allPositions.push(player[piece]);
+            });
+        });
+
+        for (var i = 0; i < allPositions.length; i++) {
+            var aux = 0;
+            for (var j = i + 1; j < allPositions.length; j++) {
+                if ((allPositions[i] == allPositions[j]) && (aux == 1)) {
+                    positionsWhereThreeOrMorePiecesAre.push(allPositions[i]);
+                    aux = 2;
+                }
+
+                if (allPositions[i] == allPositions[j]) {
+                    aux++;
+                }
+            }
+        }
+
+        return positionsWhereThreeOrMorePiecesAre;
     }
 
     resetGame() {
@@ -396,11 +475,27 @@ export class Ludo {
 
         if ((base_positions[player].includes(currentPosition)) && (this.dadoActual === 6)) {
             this.setPiecePosition(player, piece, start_positions[player]);
+            const isKill = this.checkForKill(player, piece);
 
             if (this.turnoDado === 2) {
+
+                if (isKill) {
+                    this.Matou = true;
+                    UI.unhighlightPieces();
+                    this.checkForEligiblePieces2();
+                    return;
+                }
                 console.log("trocou 2");
                 this.state = state.dice_not_rolled; //rodar denovo
             } else {
+
+                if (isKill) {
+                    this.Matou = true;
+                    UI.unhighlightPieces();
+                    this.checkForEligiblePieces1();
+                    return
+                }
+
                 UI.unhighlightPieces();
                 this.checkForEligiblePieces2();
             }
@@ -442,7 +537,7 @@ export class Ludo {
                     this.Matou = true;
                     this.checkForEligiblePieces1();
                     return
-                }else if ( (isKill) && (this.turnoDado == 2) ){
+                } else if ((isKill) && (this.turnoDado == 2)) {
                     this.Matou = true;
                     this.checkForEligiblePieces2();
                     return;
@@ -514,8 +609,20 @@ export class Ludo {
 
                 if ((currentPosition === opponentPosition) && (!safe_positions.includes(currentPosition))) {
                     this.setPiecePosition(opponent, piece, base_positions[opponent][piece]);
-                    kill = true
+                    console.log("não devia entrar aqui");
+                    kill = true;
                 }
+
+                if ((currentPosition === opponentPosition)) {
+                    this.getPositionsWhereThreeOrMorePiecesAre().forEach(position => {
+                        if (position == currentPosition) {
+                            this.setPiecePosition(opponent, piece, base_positions[opponent][piece]);
+                            console.log("devia entrar aqui");
+                            kill = true;
+                        }
+                    });
+                }
+
             });
 
         });
