@@ -7,13 +7,10 @@ export class Ludo {
         this.listenDiceClick();
         this.listenPieceClick();
         this.resetGame();
-        this.setPiecePosition("P1" , 1 , 80);
-        this.setPiecePosition("P1" , 0 , 1);
-        this.setPiecePosition("P2" , 0 , 1);
+        this.turn = 1;
 
-
-
-
+        this.setPiecePosition("P2", 0, 60);
+        this.setPiecePosition("P3", 0, 62);
 
     }
 
@@ -155,7 +152,7 @@ export class Ludo {
 
         if (this._setarValorDado) {
             this.diceOne = 1;
-            this.diceTwo = 6;
+            this.diceTwo = 1;
             this._setarValorDado = false;
         }
 
@@ -289,7 +286,7 @@ export class Ludo {
         if (this.Matou) {
             this.dadoActual = 20;
             this.Matou = false;
-        } else if(this._entrou){
+        } else if (this._entrou) {
             this.dadoActual = 10;
             this._entrou = false;
         } else {
@@ -306,7 +303,7 @@ export class Ludo {
             //this.checkForEligiblePieces2();
             console.log("n elegivel");
 
-            if ( (this.dadoActual == 10) || (this.dadoActual == 20) ){
+            if ((this.dadoActual == 10) || (this.dadoActual == 20)) {
                 this.checkForEligiblePieces2();
                 return;
             }
@@ -334,7 +331,7 @@ export class Ludo {
         if (this.Matou) {
             this.dadoActual = 20;
             this.Matou = false;
-        }else if(this._entrou){
+        } else if (this._entrou) {
             this.dadoActual = 10;
             this._entrou = false;
         } else {
@@ -350,6 +347,28 @@ export class Ludo {
         } else {
             this.incrementTurn();
         }
+    }
+
+    getStepsToCenter(player, piece) {
+        var currentPosition = this.currentPositions[player][piece];
+        var turning = turning_points[player];
+        var cont = currentPosition;
+        var steps = 0;
+
+        while (true) {
+            if (cont == 80) {
+                cont = 0;
+            }
+
+            if (cont == turning) {
+                break;
+            }
+
+            steps++;
+            cont++;
+        }
+
+        return (steps + 10);
     }
 
     getEligiblePieces(player) {
@@ -368,21 +387,24 @@ export class Ludo {
                 return false;
             }
 
-            if ((this.dadoActual == 20) && (this.dadoActual > turning_points[player] - currentPosition + 10)) {
-                return false;
-            }
-
             if ((this.dadoActual == 20) && (base_positions[player].includes(currentPosition))) {
                 return false
-            }
-
-            if ((this.dadoActual == 10) && (this.dadoActual > turning_points[player] - currentPosition + 10)) {
-                return false;
             }
 
             if ((this.dadoActual == 10) && (base_positions[player].includes(currentPosition))) {
                 return false
             }
+
+            if ((this.dadoActual == 20) && (this.dadoActual > this.getStepsToCenter(player, piece))) {
+                return false;
+            }
+
+
+            if ((this.dadoActual == 10) && (this.dadoActual > this.getStepsToCenter(player, piece))) {
+                return false;
+            }
+
+
 
             //
 
@@ -560,7 +582,7 @@ export class Ludo {
                     this._entrou = true;
                     this.checkForEligiblePieces1();
                     return;
-                } else if ((home_positions[player] == (this.currentPositions[player][piece]) && (this.turnoDado == 2))){
+                } else if ((home_positions[player] == (this.currentPositions[player][piece]) && (this.turnoDado == 2))) {
                     this._entrou = true;
                     this.checkForEligiblePieces2();
                     return;
@@ -570,10 +592,12 @@ export class Ludo {
                 const isKill = this.checkForKill(player, piece);
 
                 if ((isKill) && (this.turnoDado == 1)) {
+
                     this.Matou = true;
                     this.checkForEligiblePieces1();
                     return
                 } else if ((isKill) && (this.turnoDado == 2)) {
+                    console.log("simm");
                     this.Matou = true;
                     this.checkForEligiblePieces2();
                     return;
