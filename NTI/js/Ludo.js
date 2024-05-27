@@ -1,16 +1,17 @@
 import { UI } from './UI.js';
 import { base_positions, choose, home_entrance, home_positions, players, safe_positions, start_positions, state, turning_points } from './constants.js';
 
+
 export class Ludo {
+
+
     constructor() {
+
         console.log("vamos jogar");
         this.listenDiceClick();
         this.listenPieceClick();
         this.resetGame();
-        this.turn = 1;
 
-        this.setPiecePosition("P2", 0, 60);
-        this.setPiecePosition("P3", 0, 62);
 
     }
 
@@ -150,11 +151,11 @@ export class Ludo {
         }
 
 
-        if (this._setarValorDado) {
-            this.diceOne = 1;
-            this.diceTwo = 1;
+        /*if (this._setarValorDado) {
+            this.diceOne = 6;
+            this.diceTwo = 6;
             this._setarValorDado = false;
-        }
+        }*/
 
         this.resultado = this.diceOne + this.diceTwo;
         console.log(this._diceOne + ' ' + this._diceTwo);
@@ -637,7 +638,13 @@ export class Ludo {
     }
 
     incrementTurn() {
-        this.turn = (this.turn === 3) ? 0 : this.turn + 1;
+
+        var num = localStorage.getItem('numeroJogadores');
+        console.log(num);
+
+        this.turn = (this.turn === num - 1) ? 0 : this.turn + 1;
+
+
         this._rolarDado1OuDado2OutraVez = 0;
         this.state = state.dice_not_rolled;
     }

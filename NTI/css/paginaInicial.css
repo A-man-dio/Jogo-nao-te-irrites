@@ -322,6 +322,12 @@ button:disabled {
   opacity: 0.5;
 }
 
+#sair{
+  margin-top: 250px;
+  background-color: #2b605b;
+  color: #fff
+}
+
 .ocultar{
   display: none;
 }
